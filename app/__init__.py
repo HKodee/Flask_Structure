@@ -6,6 +6,6 @@ bd = SQLAlchemy()
 def crate_app():
     app = Flask(__name__)
 
-    app.secret_key = 'my-secret-key'
+    app.config['SECERET_KEY'] = "your-secret-key"
 
     return app
