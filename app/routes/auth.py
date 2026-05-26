@@ -31,8 +31,28 @@ def register():
 
     return render_template('register.html')
 
-# @auth_bp.route('/login', methods=["GET", "POST"])
-# def login():
-#     if request.method == "POST":
-#         username = request.form.get('username')
+@auth_bp.route('/login', methods=['GET', 'POST'])
+def login():
+
+    if request.method == 'POST':
+
+        email = request.form['email']
+        password = request.form['password']
+
+        user = User.query.filter_by(email=email).first()
+
+        if user and check_password_hash(
+            user.password,
+            password
+        ):
+
+            session['user'] = user.username
+
+            return redirect('/')
+
+        return "Invalid Email or Password"
+
+    return render_template('login.html')
+
+
         
