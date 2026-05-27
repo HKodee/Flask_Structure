@@ -13,9 +13,9 @@ def crate_app():
     db.__init__(app)
 
     from app.routes.auth import auth_bp
-    from app.routes.auth import task_bp
+    from app.routes.auth import products_bp
     app.register_blueprint(auth_bp)
-    app.register_blueprint(task_bp)
+    app.register_blueprint(products_bp)
 
 
     return app
